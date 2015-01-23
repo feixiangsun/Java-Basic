@@ -1,0 +1,55 @@
+// build path=>config build path=>Add external jars
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+public class test {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		JSONArray a = (JSONArray) parser.parse(new FileReader("D:\\bcore\\draw\\src\\test.json"));
+		StringBuilder sb = new StringBuilder();
+
+		double time = 0.0;
+		double distance = 0.0;
+		  for (Object o : a)
+		  {
+		    JSONObject person = (JSONObject) o;
+		    JSONObject data = (JSONObject) person.get("data");
+		    time = (double) data.get("9900");
+		    distance = (double)data.get("9903");
+		    sb.append(time);
+		    sb.append(distance);
+		  }
+		  System.out.println(sb.toString());
+	}
+//json 
+//	{
+//		  "corp_id" : 87,
+//		  "device_id" : "3GJ-1400075",
+//		  "data" : {
+//		    "9900" : 2650.01,
+//		    "9903" : 0.76,
+//		    "9904" : 1.5,
+//		    "9911" : 0.51,
+//		    "car_id" : "703",
+//		    "0105" : "90",
+//		    "010B" : "71",
+//		    "010C" : "1280.75",
+//		    "010D" : "5",
+//		    "010F" : "34"
+//		  },
+//		  "type" : "321",
+//		  "tags" : ["obd"],
+//		},
+
+	//java function can return a array
+	public static int[] haha(){
+		int a[] = {1,2,3,4};
+		return a;
+	}
+}
